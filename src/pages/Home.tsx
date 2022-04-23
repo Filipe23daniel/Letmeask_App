@@ -1,8 +1,9 @@
+//import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 //import { GoogleAuthProvider } from 'firebase/auth';
 
-import { firebase } from '../services/firebase'
+//import { firebase } from '../services/firebase'
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
@@ -10,18 +11,22 @@ import googleIconImg from '../assets/images/google-icon.svg';
 
 import { Button } from '../Components/Button';
 
+//import { TestContext } from '../App';
+
 import '../styles/auth.scss';
-import { auth } from 'firebase-admin';
+import { useContext } from 'react';
+import { AuthContext } from '../App';
+
 
 export function Home() {
   const navigate = useNavigate();
+  const { user, signInWithGoogle } = useContext(AuthContext)
+  //const { value, setValue} = useContext(TestContext);
 
-  function handleCreateRoom() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    auth.signInWithPopup( provider ).then(result => {
-      console.log(result);
-    })
+  async function handleCreateRoom() {
+    if  (!user) {
+      await signInWithGoogle()
+    }
 
     navigate('newRoom/*');
   }
@@ -34,6 +39,7 @@ export function Home() {
         <p>Tire as duvidas da sua audiencia em tempo real</p>
       </aside>
       <main>
+        
         <div className="main-content">
           <img src={logoImg} alt="Letmeask" />
           <button onClick={handleCreateRoom} className="create-room">
