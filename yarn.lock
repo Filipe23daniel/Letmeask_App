@@ -1520,6 +1520,16 @@
     "google-gax" "^2.24.1"
     "protobufjs" "^6.8.6"
 
+"@google-cloud/firestore@^5.0.2":
+  "integrity" "sha512-xlGcNYaW0nvUMzNn2+pLfbEBVt6oysVqtM89faMgZWkWfEtvIQGS0h5PRdLlcqufNzRCX3yIGv29Pb+03ys+VA=="
+  "resolved" "https://registry.npmjs.org/@google-cloud/firestore/-/firestore-5.0.2.tgz"
+  "version" "5.0.2"
+  dependencies:
+    "fast-deep-equal" "^3.1.1"
+    "functional-red-black-tree" "^1.0.1"
+    "google-gax" "^2.24.1"
+    "protobufjs" "^6.8.6"
+
 "@google-cloud/paginator@^3.0.7":
   "integrity" "sha512-jJNutk0arIQhmpUUQJPJErsojqo834KcyB6X7a1mxuic8i1tKXxde8E69IZxNZawRIlZdIK2QY4WALvlK5MzYQ=="
   "resolved" "https://registry.npmjs.org/@google-cloud/paginator/-/paginator-3.0.7.tgz"
