@@ -15,7 +15,7 @@ import { Button } from '../Components/Button';
 
 import '../styles/auth.scss';
 import { useContext } from 'react';
-import { AuthContext } from '../App';
+import { AuthContext } from '../contexts/AuthContext';
 
 
 export function Home() {
