@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 //import { useContext } from 'react';
 //import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 //import { AuthContext } from '../contexts/AuthContext';
 
 import illustrationImg from '../assets/images/illustration.svg';
@@ -9,14 +9,16 @@ import logoImg from '../assets/images/logo.svg';
 
 
 import { Button } from '../Components/Button';
-//import { useAuth } from '../hooks/useAuth';
+import { database } from '../services/firebase';
+import { useAuth } from '../hooks/useAuth';
 
 //import { TestContext } from '../App';
 
 import '../styles/auth.scss';
 
 export function NewRoom() {
-  //const { user } = useAuth();
+  const { user } = useAuth();
+  const navigate = useNavigate()
  // const { value, setValue } = useContext(TestContext);
 
  const [ newRoom, setNewRoom] = useState(' ');
@@ -27,6 +29,15 @@ export function NewRoom() {
        if (newRoom.trim() ===  ' ') {
          return;
        }
+
+       const roomRef = database.ref('rooms');
+
+       const firebaseRoom = await roomRef.push({
+         title: newRoom,
+         authorId: user?.id,
+       })
+
+       navigate(`/rooms/*${firebaseRoom.key}`);
  }
   return (
     <div id="page-auth">
