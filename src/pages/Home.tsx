@@ -14,13 +14,14 @@ import { Button } from '../Components/Button';
 //import { TestContext } from '../App';
 
 import '../styles/auth.scss';
-import { useContext } from 'react';
-import { AuthContext } from '../contexts/AuthContext';
+//import { useContext } from 'react';
+//import { AuthContext } from '../contexts/AuthContext';
+import { useAuth } from '../hooks/useAuth';
 
 
 export function Home() {
   const navigate = useNavigate();
-  const { user, signInWithGoogle } = useContext(AuthContext)
+  const { user, signInWithGoogle } = useAuth()
   //const { value, setValue} = useContext(TestContext);
 
   async function handleCreateRoom() {
